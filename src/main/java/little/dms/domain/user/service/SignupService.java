@@ -41,3 +41,4 @@ public class SignupService {
         return jwtTokenProvider.createToken(request.getAccountId());
     }
 }
+
