@@ -8,13 +8,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 public class BoardUpdateService {
-    BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
 
     @Transactional // JPA 변경 감지
     public void update(Long id, CreateBoardRequest createBoardRequest) {
-        Board board = boardRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("wrong Id"));
-        board.setContent(createBoardRequest.getContent());
-        board.setTitle(createBoardRequest.getTitle());
+        if(!boardRepository.existsById(id)){
+            Board board = Board.builder()
+                    .title(createBoardRequest.getTitle())
+                    .content(createBoardRequest.getContent())
+                    .build();
+        }else{
+            throw new RuntimeException("wrong id");
+        }
     }
 }

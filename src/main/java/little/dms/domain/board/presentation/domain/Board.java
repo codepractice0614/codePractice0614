@@ -10,6 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 
+
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +24,11 @@ public class Board {
 
     @ManyToOne
     private User user;
+
+    @Builder
+    public Board(String title, String content, User user) {
+        this.title = title;
+        this.content = content;
+        this.user = user;
+    }
 }
