@@ -1,6 +1,7 @@
 package little.dms.domain.board.presentation.dto.response;
 
-import little.dms.domain.board.domain.Board;
+
+import little.dms.domain.board.presentation.domain.Board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
