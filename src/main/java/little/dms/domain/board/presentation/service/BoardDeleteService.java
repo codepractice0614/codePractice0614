@@ -18,5 +18,4 @@ public class BoardDeleteService {
                 (()-> new IllegalArgumentException("error"));
         boardRepository.deleteById(id);
     }
-
 }
