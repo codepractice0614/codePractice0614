@@ -24,20 +24,6 @@ public class JwtReissueUtil {
     private final JwtProperties jwtProperties;
     private final AuthDetailsService authDetailsService;
 
-    public TokenResponse reissue(String refreshToken) {
-
-        if(!isRefreshToken(refreshToken)) {
-            throw InvalidTokenException.EXCEPTION;
-        }
-
-        String accountId = getId(refreshToken);
-
-        return TokenResponse.builder()
-                .accessToken(jwtTokenProvider.createAccessToken(accountId))
-                .refreshToken(refreshToken)
-                .build();
-    }
-
     private String getId(String token) {
         return getClaims(token).getSubject();
     }
